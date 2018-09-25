@@ -1,8 +1,8 @@
 ## Reduction and critical
 
-Fix the model "solution" of the [../race-condition/](previous exercise) that
-still contains a race condition ([../race-condition/solution/sum.c](sum.c) or
-[../race-condition/solution/sum.F90](sum.F90)).
+Fix the model "solution" of the [previous exercise](../race-condition/) that
+still contains a race condition ([sum.c](../race-condition/solution/sum.c) or
+[sum.F90](../race-condition/solution/sum.F90)).
 
 1. Use `reduction` clause to compute the sum correctly.
 
