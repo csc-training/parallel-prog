@@ -17,7 +17,9 @@ values in the buffer are initialised to -1.
 
 Implement communication that sends and receives values from the data
 vectors to the receive buffers using a single collective routine in
-each case, so that the receive buffers will have the following values:
+each case, so that the receive buffers will have the following values.
+You can start from scratch or use the skeleton code found in
+[c/skeleton.c](c/skeleton.c) or [fortran/skeleton.F90](fortran/skeleton.F90).
 
 ### Case 1
 
@@ -55,5 +57,3 @@ each case, so that the receive buffers will have the following values:
 |Task 2: |  4 |  5 | 12 | 13 | 20 | 21 | 28 | 29 |
 |Task 3: |  6 |  7 | 14 | 15 | 22 | 23 | 30 | 31 |
 
-You can start from scratch or use the skeleton code found in
-[c/skeleton.c](c/skeleton.c) or [fortran/skeleton.F90](fortran/skeleton.F90).
