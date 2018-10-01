@@ -1,0 +1,128 @@
+# Manifest of test targets for
+#   github.com/mlouhivu/test-bot.git
+
+[openmp/lib-funcs/solution/hello.F90] +omp
+  type=pass
+
+[openmp/lib-funcs/solution/hello.c] +omp
+  type=pass
+
+[openmp/race-condition/solution/sum.F90] +omp
+  type=pass
+
+[openmp/race-condition/solution/sum.c] +omp
+  type=pass
+
+[openmp/hello-world/hello.F90] +omp
+  type=pass
+
+[openmp/hello-world/hello.c] +omp
+  type=pass
+
+[openmp/work-sharing/solution/vector-addition.F90] +omp
+  type=pass
+
+[openmp/work-sharing/solution/vector-addition.c] +omp
+  type=pass
+
+[openmp/data-sharing/solution/variables.F90] +omp
+  type=pass
+
+[openmp/data-sharing/solution/variables.c] +omp
+  type=pass
+
+[mpi/message-exchange/solution/exchange.F90] +mpi
+  type=pass
+
+[mpi/message-exchange/solution/exchange.c] +mpi
+  type=pass
+
+[mpi/datatypes/solution/indexed.F90] +mpi
+  type=pass
+
+[mpi/datatypes/solution/vector.F90] +mpi
+  type=pass
+
+[mpi/datatypes/solution/vector.c] +mpi
+  type=pass
+
+[mpi/datatypes/solution/indexed.c] +mpi
+  type=pass
+
+[mpi/hello-world/solution/hello.F90] +mpi
+  type=pass
+
+[mpi/hello-world/solution/hello.c] +mpi
+  type=pass
+
+[mpi/collectives/fortran/solution/scatter.F90] +mpi
+  type=pass
+
+[mpi/collectives/fortran/solution/alltoall.F90] +mpi
+  type=pass
+
+[mpi/collectives/fortran/solution/broadcast.F90] +mpi
+  type=pass
+
+[mpi/collectives/fortran/solution/gatherv.F90] +mpi
+  type=pass
+
+[mpi/collectives/fortran/solution/reduce.F90] +mpi
+  type=pass
+
+[mpi/collectives/c/solution/reduce.c] +mpi
+  type=pass
+
+[mpi/collectives/c/solution/scatter.c] +mpi
+  type=pass
+
+[mpi/collectives/c/solution/alltoall.c] +mpi
+  type=pass
+
+[mpi/collectives/c/solution/gatherv.c] +mpi
+  type=pass
+
+[mpi/collectives/c/solution/broadcast.c] +mpi
+  type=pass
+
+[mpi/non-blocking/solution/ibcast.F90] +mpi
+  type=pass
+
+[mpi/non-blocking/solution/msg-chain-ip2p.F90] +mpi
+  type=pass
+
+[mpi/non-blocking/solution/ibcast.c] +mpi
+  type=pass
+
+[mpi/non-blocking/solution/msg-chain-ip2p.c] +mpi
+  type=pass
+
+[mpi/persistent/solution/msg-chain-pc.F90] +mpi
+  type=pass
+
+[mpi/persistent/solution/msg-chain-pc.c] +mpi
+  type=pass
+
+[mpi/message-chain/fortran/solution/sendrecv.F90] +mpi
+  type=pass
+
+[mpi/message-chain/fortran/solution/status.F90] +mpi
+  type=pass
+
+[mpi/message-chain/fortran/solution/send-recv.F90] +mpi
+  type=pass
+
+[mpi/message-chain/fortran/solution/proc-null.F90] +mpi
+  type=pass
+
+[mpi/message-chain/c/solution/proc-null.c] +mpi
+  type=pass
+
+[mpi/message-chain/c/solution/sendrecv.c] +mpi
+  type=pass
+
+[mpi/message-chain/c/solution/status.c] +mpi
+  type=pass
+
+[mpi/message-chain/c/solution/send-recv.c] +mpi
+  type=pass
