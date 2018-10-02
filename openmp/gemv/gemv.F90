@@ -5,7 +5,7 @@ implicit none
 integer, parameter :: ik = int64
 integer, parameter :: dp = real64
 
-integer(kind=ik), parameter  :: rows = 4,cols = 4
+integer(kind=ik), parameter  :: rows = 10000,cols = 10000
 real(kind=dp), allocatable :: A(:,:), b(:), x(:)
 integer(kind=ik) :: i
 
