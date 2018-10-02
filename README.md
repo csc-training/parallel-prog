@@ -16,7 +16,7 @@ Parallel Programming". The course is part of PRACE Advanced Training Center
  - [Race condition in parallel sum](openmp/race-condition/)
  - [Reduction and critical](openmp/reduction/)
  - [OpenMP library functions](openmp/lib-funcs/)
- - [Bonus: Matrix vector product](openmp/gemv/)
+ - [Bonus: Matrix-vector product](openmp/gemv/)
 
 ### MPI
 
