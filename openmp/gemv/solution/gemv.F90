@@ -27,7 +27,7 @@ contains
 subroutine make_hilbert_mat(A)
   real(kind=dp), intent(out) :: A(:,:)
   integer(kind=ik) :: i, j
-!$omp parallel 
+!$omp parallel private(i,j)
 !$omp do
   do j = 1, size(A,2)
     do i = 1, size(A,1)
@@ -43,15 +43,13 @@ subroutine gemv(A, x, b)
   real(kind=dp), intent(out) :: b(:)
   real(kind=dp) :: rowsum 
   integer(kind=ik) :: i, j
-  !$omp parallel
-  !$omp do reduction(+:b)
+  !$omp parallel do private(i,j) reduction(+:b)
   do j = 1, size(A, 2)
     do i = 1, size(A, 1)
       b(i) = b(i) + A(i,j)*x(j)
     end do
   end do
-  !$omp end do
-  !$omp end parallel
+  !$omp end parallel do
 end subroutine
 
 #include "gemv_utils.F90"
