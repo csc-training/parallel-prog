@@ -1,7 +1,7 @@
 ## Heat equation solver in parallel with MPI
 
-Parallelise our implementation of a two-dimensional heat equation solver using
-MPI (see [Code description](code-description.md) for some theory and more
+Use MPI to parallelise our implementation of a two-dimensional heat equation
+solver (see [Code description](code-description.md) for some theory and more
 details about the code).
 
 To parallelise the code, one needs to divide the grid into blocks of columns
