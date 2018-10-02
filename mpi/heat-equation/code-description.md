@@ -51,7 +51,8 @@ are missing. :)
 To finish off the parallelisation of the code, one needs to implement a halo
 exchange between the domains in the decomposition. An example model solution
 is also available in [C](c/solution/) and [Fortran](fortran/solution/).
-To build the code, please use the provided `Makefile` (by typing `make`).
+To build the code, please use the provided `Makefile` (by giving the command
+`make` in the directory).
 
 The solver carries out the time development of the 2D heat equation over the
 number of time steps provided by the user. The default geometry is a flat
@@ -73,6 +74,6 @@ Examples on how to run the binary:
 
 The program will produce an image (PNG) of the temperature field after every
 500 iterations. You can change the frequency by modifying the parameter
-`image_interval` in [main.c](c/main.c) (or [main.F90](fortran/main.F90).
-You can also visualize the images using the `animate` command:
+`image_interval` in [main.c](c/main.c) (or [main.F90](fortran/main.F90)).
+You can also visualize the images e.g. with the following command:
 `animate heat_*.png`.
