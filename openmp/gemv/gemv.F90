@@ -5,13 +5,15 @@ implicit none
 integer, parameter :: ik = int64
 integer, parameter :: dp = real64
 
-integer(kind=ik), parameter  :: rows = 10000,cols = 10000
+integer(kind=ik), parameter  :: rows = 4,cols = 4
 real(kind=dp), allocatable :: A(:,:), b(:), x(:)
 integer(kind=ik) :: i
 
 allocate(A(rows,cols), b(rows), x(rows))
 call make_hilbert_mat(A)
 x = [(1_dp*i, i=1,rows)]
+b = 0.0_dp
+call gemv(A, x, b)
 
 #if 0
   call print_vec(x);
@@ -19,7 +21,6 @@ x = [(1_dp*i, i=1,rows)]
   call print_vec(b);
 #endif
 
-call gemv(A, x, b)
 print *, 'sum(x) = ', sum(x), 'sum(Ax) = ', sum(b)
 contains
 

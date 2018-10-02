@@ -6,3 +6,5 @@ Explore `gemv.c` or `gemv.F90` files.
 1. Parallelize the gemv routinen. Speedup: [add here]
 2. Parallelize make_hilbert_mat routine. Speedup: [add here]
 3. Parallelize rest of the loops you can find (note: some of them are implicit in Fortran version). Speedup: [add here]
+
+Note that parallelizing the `gemv` routine in Fortran is tricker than in C.
