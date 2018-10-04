@@ -64,7 +64,7 @@ aprun –n 4 –d 6 –e OMP_NUM_THREADS=6 ./my_hyb_exe
 
 ### Batch jobs
 Larger and/or longer runs should be submitted via the batch system. An example
-batch job script (a text file, let’s call it sisu_job.sh) for a MPI job could
+batch job script (a text file, let’s call it `sisu_job.sh`) for a MPI job could
 look like
 ```
 #!/bin/bash
