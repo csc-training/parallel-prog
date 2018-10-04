@@ -73,9 +73,10 @@ look like
 #SBATCH -o out.%j
 #SBATCH -e err.%j
 #SBATCH -p test
-#SBATCH --nodes=2
-aprun -n 48 ./my_mpi_exe
+#SBATCH --nodes=1
+aprun -n 4 ./my_mpi_exe
 ```
+Here we run job with 4 tasks on 1 node.
 
 The batch script is then submitted with the sbatch command as
 ```
