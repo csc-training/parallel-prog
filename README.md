@@ -27,3 +27,4 @@ Parallel Programming". The course is part of PRACE Advanced Training Center
  - [Non-blocking communication](mpi/non-blocking/)
  - [Persistent communication](mpi/persistent/)
  - [User-defined datatypes](mpi/datatypes/)
+ - [(Bonus) Heat equation solver](mpi/heat-equation/)
