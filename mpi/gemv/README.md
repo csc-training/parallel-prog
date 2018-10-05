@@ -1,7 +1,7 @@
 # General dense matrix-vector product
 
-The skeleton codes in `gemv.F90` or `gemv.c` contain routines that computes
-matrix vector product and outputs their sum to screen.
+The skeleton codes in `gemv.F90` or `gemv.c` contain routines that compute
+matrix vector products.
 
 * Parallelize the program using MPI by splitting the rows of the matrix to
   across processes.
