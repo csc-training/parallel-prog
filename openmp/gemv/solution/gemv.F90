@@ -9,9 +9,9 @@ integer(kind=ik), parameter  :: rows = 10000,cols = 10000
 real(kind=dp), allocatable :: A(:,:), b(:), x(:)
 integer(kind=ik) :: i
 
-allocate(A(rows,cols), b(rows), x(rows))
+allocate(A(rows,cols), b(rows), x(cols))
 call make_hilbert_mat(A)
-x = [(1_dp*i, i=1,rows)]
+x = [(1_dp*i, i=1,cols)]
 b = 0.0_dp
 call gemv(A, x, b)
 

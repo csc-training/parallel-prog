@@ -11,14 +11,17 @@ int main(int argc, char *argv[])
   double **A, *b, *x;
 
   b = (double*) malloc(sizeof(double)*rows);
-  x = (double*) malloc(sizeof(double)*rows);
+  x = (double*) malloc(sizeof(double)*cols);
 
   allocate_dense(rows, cols, &A);
 
   make_hilbert_mat(rows,cols, &A);
 
-  for (size_t i = 0; i < rows; i++) {
+  for (size_t i = 0; i < cols; i++) {
     x[i] = (double) i+1 ;
+  }
+
+  for (size_t i = 0; i < rows; i++) {
     b[i] = (double) 0.0;
   }
 
@@ -30,7 +33,7 @@ int main(int argc, char *argv[])
   print_vec(b, rows);
 #endif
 
-  printf("sum(x) = %f, sum(Ax) = %f\n", sum_vec(x,rows), sum_vec(b,rows));
+  printf("sum(x) = %f, sum(Ax) = %f\n", sum_vec(x,cols), sum_vec(b,rows));
   return 0;
 }
 
