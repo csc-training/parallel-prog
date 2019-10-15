@@ -61,7 +61,7 @@ MPI_Wait(`request`{.input}, `status`{.output})
   : `status`{.output}
     : status of the completed communication, see `MPI_Recv`
 
-A call to `MPI_WAIT` returns when the operation identified by request is complete
+A call to `MPI_Wait` returns when the operation identified by request is complete
 
 # Wait for non-blocking operations
 
