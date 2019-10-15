@@ -26,7 +26,7 @@ lang:   en
     - Unique rank in each communicator
 </div>
 <div class="column">
-![](images/communicator.svg){.center width=80%}
+![](img/communicator.svg){.center width=80%}
 </div>
 
 
@@ -82,7 +82,7 @@ I am rank 5 in MPI_COMM_WORLD, but 2 in Comm 2.
 I am rank 1 in MPI_COMM_WORLD, but 0 in Comm 2.
 ```
 
-![](images/communicator.svg){.center width=50%}
+![](img/communicator.svg){.center width=50%}
 
 </div>
 
@@ -104,10 +104,10 @@ MPI_Bcast(sendbuf, 8, MPI_INT, 0, subcomm);
 </div>
 <div class=column>
 Before broadcast:
-![](images/colorcomm1.svg){width=90%}
+![](img/colorcomm1.svg){width=90%}
 <p>
 After broadcast:
-![](images/colorcomm2.svg){width=90%}
+![](img/colorcomm2.svg){width=90%}
 </div>
 
 # Communicator manipulation

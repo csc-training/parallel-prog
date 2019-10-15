@@ -24,7 +24,7 @@ lang:   en
 
 <p>
 
-![](images/layout.svg){.center width=50%}
+![](img/layout.svg){.center width=50%}
 
 <p>
 
@@ -92,7 +92,7 @@ MPI_Type_vector(`count`{.input}, `blocklen`{.input}, `stride`{.input}, `oldtype`
 </div>
 <div class=column>
 <p>
-![](images/type_vector.svg){.center width=100%}
+![](img/type_vector.svg){.center width=100%}
 </div>
 
 # Example: sending rows of matrix in Fortran
@@ -111,7 +111,7 @@ call mpi_type_free(rowtype, ierr)
 ```
 
 <p>
-![](images/layout.svg){.center width=50%}
+![](img/layout.svg){.center width=50%}
 
 # MPI_TYPE_INDEXED {.split-def-3}
 
@@ -138,7 +138,7 @@ MPI_Type_indexed(`count`{.input}, `blocklens`{.input}, `displs`{.input}, `oldtyp
     : `-`{.ghost}
 
 <p>
-![](images/type_indexed.svg){.center width=100%}
+![](img/type_indexed.svg){.center width=100%}
 
 # Example: an upper triangular matrix
 
@@ -164,13 +164,13 @@ MPI_Type_free(&upper);
 </div>
 
 <div class="column">
-![](images/triangle.svg){.center width=65%}
+![](img/triangle.svg){.center width=65%}
 </div>
 
 # From non-contiguous to contiguous data
 
 <div class=column>
-![](images/contiguous.svg){.center width=100%}
+![](img/contiguous.svg){.center width=100%}
 </div>
 <div class=column>
 ```c

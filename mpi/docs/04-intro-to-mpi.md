@@ -58,7 +58,7 @@ lang:   en
 
 # Processes and threads
 
-![](images/processes-threads-highlight-proc.svg){.center width=90%}
+![](img/processes-threads-highlight-proc.svg){.center width=90%}
 
 <div class="column">
 
@@ -116,7 +116,7 @@ if (rank == 1) {
 - All variables and data structures are local to the process
 - Processes can exchange data by sending and receiving messages
 
-![](images/data-model.svg){.center width=100%}
+![](img/data-model.svg){.center width=100%}
 
 # The MPI library
 
