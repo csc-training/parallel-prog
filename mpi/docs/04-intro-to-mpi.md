@@ -1,6 +1,6 @@
 ---
 title:  Message-Passing Interface (MPI) 
-author: CSC Summerschool
+author: CSC Training
 date:   2019
 lang:   en
 ---

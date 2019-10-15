@@ -1,7 +1,7 @@
 ---
 title:  Collective communication
-author: CSC Summerschool
-date:   2019-06
+author: CSC Training
+date:   2019
 lang:   en
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: Overview of High Performance Computing
 author: CSC Training
-date:   2019-06
+date:   2019
 lang:   en
 ---
 

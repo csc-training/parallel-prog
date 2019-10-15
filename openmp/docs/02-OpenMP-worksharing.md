@@ -1,6 +1,6 @@
 ---
 title:  OpenMP worksharing
-author: CSC Summerschool
+author: CSC Training
 date:   2019-07
 lang:   en
 ---

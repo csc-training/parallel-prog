@@ -1,6 +1,6 @@
 ---
 title:  User-defined communicators
-author: CSC Summerschool
+author: CSC Training
 date:   2019
 lang:   en
 ---
