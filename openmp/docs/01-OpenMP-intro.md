@@ -133,8 +133,8 @@ program hello
 end program hello
 ```
 ```bash
-> ftn -h omp omp_hello.f90 -o omp
-> aprun -e OMP_NUM_THREADS=4 -n 1 -d 4 ./omp
+> gfortran -fopenmp omp_hello.f90 -o omp
+> OMP_NUM_THREADS=4 ./omp
  Hello world! by thread             0
  Hello world! by thread             2
  Hello world! by thread             3
@@ -155,8 +155,8 @@ int main(int argc, char argv[]){
   }
 ```
 ```bash
-> cc -h omp omp_hello.c -o omp
-> aprun -e OMP_NUM_THREADS=4 -n 1 -d 4 ./omp
+> gcc -fopenmp omp_hello.c -o omp
+> OMP_NUM_THREADS=4 ./omp
  Hello world! by thread             2
  Hello world! by thread             3
  Hello world! by thread             0
