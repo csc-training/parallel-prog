@@ -54,29 +54,29 @@ lang:   en
 
 - A collection of _compiler directives_ and _library routines_ for
   **multi-threaded**, **shared-memory parallelization**
-* Fortran 77/9X/03 and C/C++ are supported
-* Latest version of the standard is 5.0 (November 2015)
+- Fortran 77/9X/03 and C/C++ are supported
+- Latest version of the standard is 5.0 (November 2015)
     - Full support for accelerators (GPUs)
     - Support latest versions of C, C++ and Fortran
     - Support for a fully descriptive loop construct
     - and more
-* Here we still focus on 4.5 since 5.0 not yet widely supported in compilers
+- Here we still focus on 4.5 since 5.0 not yet widely supported in compilers
 
 
 # Why would you want to learn OpenMP?
 
-* OpenMP parallelized program can be run on your many-core workstation or on a
+- OpenMP parallelized program can be run on your many-core workstation or on a
   node of a cluster
-* Enables one to parallelize one part of the program at a time
+- Enables one to parallelize one part of the program at a time
     - Get some speedup with a limited investment in time
     - Efficient and well scaling code still requires effort
-* Serial and OpenMP versions can easily coexist
-* Hybrid MPI+OpenMP programming
+- Serial and OpenMP versions can easily coexist
+- Hybrid MPI+OpenMP programming
 
 
 # Three components of OpenMP
 
-* Compiler directives, i.e. language extensions, for shared memory
+- Compiler directives, i.e. language extensions, for shared memory
   parallelization
 
 |       | directive     | construct   | clauses         |
@@ -84,19 +84,19 @@ lang:   en
 |C/C++  | `#pragma omp` | `parallel`  | `shared(data)`  |
 |Fortran| `!$omp`       | `parallel`  | `shared(data)`  |
 
-* Runtime library routines (Intel: libiomp5, GNU: libgomp)
+-Runtime library routines (Intel: libiomp5, GNU: libgomp)
     - Conditional compilation to build serial version
-* Environment variables
+- Environment variables
     - Specify the number of threads, thread affinity etc.
 
 
 # OpenMP directives
 
-* Sentinels precede each OpenMP directive
+- Sentinels precede each OpenMP directive
     - C/C++:     `#pragma omp`
     - Fortran:    `!$omp`
 
-* Conditional compilation with `_OPENMP` macro:
+- Conditional compilation with `_OPENMP` macro:
 ```c
 #ifdef _OPENMP
     OpenMP specific code
@@ -108,7 +108,7 @@ lang:   en
 
 # Compiling an OpenMP program
 
-* Compilers that support OpenMP usually require an option that enables the
+- Compilers that support OpenMP usually require an option that enables the
   feature
     - GNU: `-fopenmp`
     - Intel: `-qopenmp`
@@ -171,7 +171,7 @@ int main(int argc, char argv[]){
 # Parallel construct
 
 <div class=column>
-* Defines a parallel region
+- Defines a parallel region
     - C/C++:
     `#pragma omp parallel [clauses]`
     - Fortran:
@@ -189,51 +189,48 @@ SPMD: Single Program Multiple Data
 
 # How do the threads interact?
 
-* Because of the shared address space threads can interact using _shared
+- Because of the shared address space threads can interact using _shared
   variables_
-* Threads often need some _private work space_ together with shared variables
+- Threads often need some _private work space_ together with shared variables
     - for example the index variable of a loop
-* Visibility of different variables is defined using _data-sharing clauses_ in
+- Visibility of different variables is defined using _data-sharing clauses_ in
   the parallel region definition
 
 
 # omp parallel: data-sharing clauses
 
-* **private(list)**
+- **private(list)**
     - Private variables are stored in the  private stack of each thread
     - Undefined initial value
     - Undefined value after parallel region
-* **firstprivate(list)**
+- **firstprivate(list)**
     - Same as private variable, but with an initial value that is the same as
 	  the original objects defined outside the parallel region
 
 
 # omp parallel: data-sharing clauses
 
-* **shared(list)**
+- **shared(list)**
     - All threads can write to, and read from
     - a shared variable
     - Variables are shared by default
-* **default(private/shared/none)**
+- **default(private/shared/none)**
     - Sets default for variables to be shared, private or not defined
     - In C/C++ default(private) is not allowed
     - default(none) can be useful for debugging as each variable has to be
 	  defined manually
 
-_Race condition =
-a thread accesses a
-variable while another
-writes into it_
+_Race condition = a thread accesses a variable while another writes into it_
 
 
 # Default behaviour
 
-* Most variables are _shared_ by default
+- Most variables are _shared_ by default
     - Global variables are shared among threads
-        * C: static variables, file scope variables
-        * Fortran: save and module variables, common blocks
-        * `threadprivate(list)` can be used to make a private copy
-* Private by default:
+        - C: static variables, file scope variables
+        - Fortran: save and module variables, common blocks
+        - `threadprivate(list)` can be used to make a private copy
+- Private by default:
     - Stack variables of functions called from parallel region
     - Automatic variables within a block
 
@@ -243,13 +240,13 @@ writes into it_
 <div class=column>
 main.c
 ```c
-int A[5];
+int A[5];  // shared
 
 int main(void) {
-    int B[2];
+    int B[2];  // shared
 #pragma omp parallel
 {
-    float c;
+    float c;  // private
     do_things(B);
     ...
 }
@@ -260,10 +257,10 @@ int main(void) {
 <div class=column>
 kernel.c
 ```c
-extern int A[5];
+extern int A[5];  // shared
 
 void do_things(int *var) {
-    double wrk[10];
+    double wrk[10];  // private
     static int status;
     ...
 }
