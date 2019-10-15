@@ -33,7 +33,10 @@ asum = 0.0d0
 
 - Summing elements of array is an example of reduction operation
 
-![](img/equation.png){.center width=70%}
+$$
+S = \sum_{j=1}^{N} A_j = \sum_{j=1}^{\frac{N}{2}} A_j +
+\sum_{j=\frac{N}{2} + 1}^{N} A_j = B_1 + B_2 = \sum_{j=1}^{2} B_j
+$$
 
 - OpenMP provides support for common reductions within parallel regions and
   loops with the reduction clause
@@ -151,7 +154,7 @@ for(i=0; i < n; i++) {
 - When a thread reaches a barrier it only continues after all the threads in the same thread team have reached it
     - Each barrier must be encountered by all threads in a team, or none at all
     -The sequence of work-sharing regions and barrier regions encountered must be same for all threads in team
-- Implicit barrier at the end of: do, parallel, sections, single, workshare
+- Implicit barrier at the end of: `do`, `parallel`, `single`, `workshare`
 
 # Execution control constructs
 
