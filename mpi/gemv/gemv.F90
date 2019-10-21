@@ -21,6 +21,7 @@ program gemv_test
 #endif
 
   print *, 'sum(x) = ', sum(x), 'sum(Ax) = ', sum(b)
+
 contains
 
   subroutine make_hilbert_mat(A)
