@@ -12,7 +12,7 @@ values in the buffer are initialized to -1.
 Implement now a pattern with user defined communicators and collective
 operation so that the receive buffers will have the following values:
 
-![](https://raw.githubusercontent.com/csc-training/summerschool/master/mpi/communicator/img/comm-split-reduce.svg)
+![](https://raw.githubusercontent.com/csc-training/summerschool/master/mpi/communicator/img/comm-split-reduce.svg?sanitize=true)
 
 You can start from scratch or use the skeleton code of
 [Collectives exercise](../collectives) found in
