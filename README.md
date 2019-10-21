@@ -15,7 +15,7 @@ Parallel Programming". The course is part of PRACE Training Center
  - [Message exchange](mpi/message-exchange/)
  - [Message chain](mpi/message-chain/)
  - [Collective operations](mpi/collectives/)
- - [Communicators and collectives](communicator)
+ - [Communicators and collectives](mpi/communicator)
  - [Non-blocking communication](mpi/non-blocking/)
  - [Persistent communication](mpi/persistent/)
  - [User-defined datatypes](mpi/datatypes/)
