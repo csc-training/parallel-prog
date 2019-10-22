@@ -260,15 +260,15 @@ int total = 0;
 
 # Some useful environment variables
 
-|Variable          | Action                             |
-|---------         |------------------                        |
-|OMP_NUM_THREADS   |Number of threads to use                       |
-|OMP_SCHEDULE       |Default scheduling                           |
-|OMP_PROC_BIND       |Bind threads to CPUs                       |
-|OMP_PLACES       |Specify the bindings between threads and CPUs           |
-|OMP_DISPLAY_ENV   |Print the current OpenMP environment info on stderr           |
-|OMP_STACKSIZE       |Default size of thread stack                   |
-|OMP_THREAD_LIMIT  |Maximum number of threads to use                   |
+| Variable         | Action                                              |
+|------------------|-----------------------------------------------------|
+| OMP_NUM_THREADS  | Number of threads to use                            |
+| OMP_SCHEDULE     | Default scheduling                                  |
+| OMP_PROC_BIND    | Bind threads to CPUs                                |
+| OMP_PLACES       | Specify the bindings between threads and CPUs       |
+| OMP_DISPLAY_ENV  | Print the current OpenMP environment info on stderr |
+| OMP_STACKSIZE    | Default size of thread stack                        |
+| OMP_THREAD_LIMIT | Maximum number of threads to use                    |
 
 
 # Runtime functions

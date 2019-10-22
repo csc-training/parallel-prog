@@ -1,15 +1,8 @@
 ifeq ($(COMP),)
-COMP=cray
+COMP=gnu
 endif
 
 COMMONDIR=../common
-
-ifeq ($(COMP),cray)
-CC=cc
-CCFLAGS=-O3 -I/appl/opt/libpng/include -I$(COMMONDIR)
-LDFLAGS=-L/appl/opt/libpng/lib
-LIBS=-lpng -lz
-endif
 
 ifeq ($(COMP),gnu)
 CC=mpicc
