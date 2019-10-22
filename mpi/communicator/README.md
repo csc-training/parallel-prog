@@ -1,6 +1,6 @@
 ## Communicators and collectives
 
-In this exercise we combine collective communcation with user defined
+In this exercise we combine collective communication with user defined
 communicators. Write a program for four MPI processes, such that each
 process has a data vector with the following data:
 

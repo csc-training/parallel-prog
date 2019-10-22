@@ -18,4 +18,4 @@ pdfs: $(PDFS)
 
 .PHONY: clean
 clean:
-	-/bin/rm -f *.html *~
+	-/bin/rm -f *.html *.pdf *~
