@@ -43,11 +43,11 @@ module load mpi/openmpi-x86_64
 Compilation of the MPI programs can then be performed with the `mpif90` and `mpicc` wrapper
 commands:
 ```
-mpif90 –o my_mpi_exe test.f90
+mpif90 -o my_mpi_exe test.f90
 ```
 or
 ```
-mpicc –o my_mpi_exe test.c
+mpicc -o my_mpi_exe test.c
 ```
 
 The wrapper commands include automatically all the flags needed for building
@@ -63,11 +63,11 @@ mpirun –np 4 ./my_mpi_exe
 OpenMP programs can be compiled with `gfortran` and `gcc` commands together with the `-fopenmp`
 flag:
 ```
-mpif90 –o my_omp_exe -fopenmp test.f90
+mpif90 -o my_omp_exe -fopenmp test.f90
 ```
 or
 ```
-mpicc –o my_omp_exe -fopenmp test.c
+mpicc -o my_omp_exe -fopenmp test.c
 ```
 
 The number of threads for OpenMP programs can be specified with `OMP_NUM_THREADS`: 
