@@ -55,7 +55,7 @@ MPI programs.
 
 The programs can be executed as
 ```
-mpirun –np 4 ./my_mpi_exe
+mpirun -np 4 ./my_mpi_exe
 ```
 
 ### OpenMP
