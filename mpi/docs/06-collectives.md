@@ -208,7 +208,7 @@ end if
 scounts(0:3) = [ 1, 2, 3, 4 ]
 displs(0:3) = [ 0, 1, 3, 6 ]
 
-call mpi_scatterv(a, counts, &
+call mpi_scatterv(a, scounts, &
     displs, MPI_INTEGER, &
     aloc, scounts(my_id), &
     MPI_INTEGER, 0, &
