@@ -16,7 +16,7 @@ program vector_addition
 
   !$omp parallel do default(shared) private(i)
   do i = 1, nx
-     vecC(i) = vecA(i) * vecB(i)
+     vecC(i) = vecA(i) + vecB(i)
   end do
   !$omp end parallel do
 
