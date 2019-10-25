@@ -84,7 +84,7 @@ lang:   en
 |C/C++  | `#pragma omp` | `parallel`  | `shared(data)`  |
 |Fortran| `!$omp`       | `parallel`  | `shared(data)`  |
 
--Runtime library routines (Intel: libiomp5, GNU: libgomp)
+- Runtime library routines (Intel: libiomp5, GNU: libgomp)
     - Conditional compilation to build serial version
 - Environment variables
     - Specify the number of threads, thread affinity etc.
