@@ -154,7 +154,7 @@ What is the value of i that is printed out? ` a) 0  b) 6  c) >= 100`
     {
         while (i < 6) {
             #pragma omp task shared(i)
-            if (omp_get_thread_num() == 1)
+            if (omp_get_thread_num() != 0)
                 i=100;
             i++;
         }
@@ -177,6 +177,7 @@ What is the value of i that is printed out? ` a) 0  b) 6  c) >= 100`
 ```c
 #pragma omp parallel
 {
+    # pragma omp single
     fibonacci(10);
 }
 ```
