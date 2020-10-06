@@ -36,7 +36,7 @@ that. Note, however, that no support for installing MPI environment can be provi
 
 ### MPI
 
-Compilation of the MPI programs can then be performed with the `mpif90` and `mpicc` wrapper
+Compilation of the MPI programs can be performed with the `mpif90` and `mpicc` wrapper
 commands:
 ```
 mpif90 -o my_mpi_exe test.f90
