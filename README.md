@@ -14,11 +14,8 @@ Parallel Programming". The course is part of PRACE Training Center
  - [Hello world](mpi/hello-world/)
  - [Message exchange](mpi/message-exchange/)
  - [Message chain](mpi/message-chain/)
- - [Collective operations](mpi/collectives/)
- - [Communicators and collectives](mpi/communicator)
  - [Non-blocking communication](mpi/non-blocking/)
- - [Persistent communication](mpi/persistent/)
- - [User-defined datatypes](mpi/datatypes/)
+ - [Collective operations](mpi/collectives/)
  - [(Bonus) Heat equation solver](mpi/heat-equation/)
 
 ### OpenMP
@@ -30,4 +27,3 @@ Parallel Programming". The course is part of PRACE Training Center
  - [Reduction and critical](openmp/reduction/)
  - [OpenMP library functions](openmp/lib-funcs/)
  - [Bonus: Heat equation with OpenMP](openmp/heat-equation)
- - [Bonus: Dynamic parallelization with OpenMP tasks](openmp/tasks)
