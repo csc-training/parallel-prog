@@ -1,7 +1,7 @@
 ---
 title: Parallel computing concepts
 author: CSC Training
-date:   2019
+date:   2020
 lang:   en
 ---
 
@@ -89,6 +89,8 @@ lang:   en
 - Amdahl’s law: the fraction of non-parallelizable parts establishes
   the limit on how many cores can be harnessed 
 
+  $$ S(N) = \frac{1}{(1 - s) / N + s}, \quad \textrm{s=non-parallel fraction} $$
+
 
 # Parallel programming {.section}
 
@@ -101,7 +103,8 @@ lang:   en
     - Often computationally intensive parts are still written in C/C++
       or Fortran 
 - For some applications there are high-level frameworks with
-  interfaces to multiple languages 
+  interfaces to multiple languages
+    - Petsc, Trilinos, Kokkos 
     - TensorFlow for deep learning
     - Spark for MapReduce
 
@@ -139,6 +142,7 @@ lang:   en
 
 </div>
 
+<!--
 # Group work: how to parallelize a problem? {.section}
 
 # Smoothed Particle Hydrodynamic simulation
@@ -164,3 +168,5 @@ lang:   en
     - Which parts of the work can be carried out independently and in parallel?
     - What kind of coordination between the parallel tasks is needed?
 - If you come up with several approaches, discuss their pros and cons
+
+-->
