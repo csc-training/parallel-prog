@@ -1,7 +1,7 @@
 ---
 title: Heat equation
 author: CSC Training
-date:   2019
+date:   2020
 lang:   en
 ---
 
