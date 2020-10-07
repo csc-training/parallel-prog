@@ -1,7 +1,7 @@
 ---
-title:  Message-Passing Interface (MPI) 
+title:  Point-to-point communication 
 author: CSC Training
-date:   2019
+date:   2020
 lang:   en
 ---
 
