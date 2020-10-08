@@ -1,12 +1,14 @@
 ---
-title:  OpenMP sychronisation
+title:  OpenMP reductions and execution control
 author: CSC Training
-date:   2019-07
+date:   2020
 lang:   en
 ---
 
+# OpenMP reductions {.section}
 
-# Race condition
+
+# Race condition in reduction
 
 - Race conditions take place when multiple threads read and write a variable
   simultaneously, for example:
@@ -22,11 +24,6 @@ asum = 0.0d0
 
 - Random results depending on the order the threads access **asum**
 - We need some mechanism to control the access
-
-
-# Race condition: example
-
-![](img/race-condition.png)
 
 
 # Reductions
@@ -106,7 +103,7 @@ $$
 
 </small>
 
-# Race condition avoided with reduction
+# Race condition avoided with reduction clause
 
 ```fortran
 !$omp parallel do shared(x,y,n) private(i) reduction(+:asum)
@@ -122,13 +119,15 @@ for(i=0; i < n; i++) {
 }
 ```
 
+# OpenMP execution controls {.section}
 
 # Execution controls
 
-* Sometimes a part of parallel region should be executed only by the master thread or by a single thread at time
+- Sometimes a part of parallel region should be executed only by the
+  master thread or by a single thread at time 
     - IO, initializations, updating global values, etc.
     - Remember the synchronization!
-* OpenMP provides clauses for controlling the execution of code blocks
+- OpenMP provides clauses for controlling the execution of code blocks
 
 # Failing example
 
@@ -180,18 +179,6 @@ for(i=0; i < n; i++) {
 - A section that is executed by only one thread at a time
 - Unnamed critical sections are treated as the same section
 
-# Execution control constructs
-
-`flush[(name)]`
-  : `-`{.ghost}
-
-<br>
-
-- Synchronizes the memory of all threads
-- Only needed in some special cases
-- Implicit flush at
-    - All explicit and implicit barriers
-    - Entry to / exit from critical section and lock routines
 
 # Execution control constructs
 
@@ -239,132 +226,59 @@ int total = 0;
   printf("Grand total is: %5.2f\n", total);
 }
 ```
-# OpenMP runtime library and environment variables {.section}
-
-# OpenMP runtime library and environment variables
-
-* OpenMP provides several means to interact with the execution environment. These operations include e.g.
-    - Setting the number of threads for parallel regions
-    - Requesting the number of CPUs
-    - Changing the default scheduling for work-sharing clauses
-* Improves portability of OpenMP programs between different architectures (number of CPUs, etc.)
-
-# Environment variables
-
-* OpenMP standard defines a set of environment variables that all implementations have to support
-* The environment variables are set before the program execution and they are read during program start-up
-    - Changing them during the execution has no effect
-* We have already used `OMP_NUM_THREADS`
-
-
-
-# Some useful environment variables
-
-| Variable         | Action                                              |
-|------------------|-----------------------------------------------------|
-| OMP_NUM_THREADS  | Number of threads to use                            |
-| OMP_SCHEDULE     | Default scheduling                                  |
-| OMP_PROC_BIND    | Bind threads to CPUs                                |
-| OMP_PLACES       | Specify the bindings between threads and CPUs       |
-| OMP_DISPLAY_ENV  | Print the current OpenMP environment info on stderr |
-| OMP_STACKSIZE    | Default size of thread stack                        |
-| OMP_THREAD_LIMIT | Maximum number of threads to use                    |
-
-
-# Runtime functions
-
-* Runtime functions can be used either to read the settings or to set (override) the values
-* Function definitions are in
-    - C/C++ header file `omp`.h
-    - `omp_lib` Fortran module (`omp_lib`.h header in some implementations)
-* Two useful routines for finding out threadid, and number of threads:
-    - `omp_get_num_threads()`
-    - `omp_get_thread_num()`
-
-
-
-# OpenMP conditional compilation
-
-
-* Conditional compilation with `_OPENMP` macro:
-
-```c
-#ifdef _OPENMP
-    OpenMP specific code with, e.g., library calls
-#else
-    Code without OpenMP
-#endif
-```
-
-
-<!--
-
-# List of environment variables (OpenMP 4.5)
-
-<div class=column>
-`OMP_SCHEDULE`
-`OMP_NUM_THREADS`
-`OMP_DYNAMIC`
-`OMP_PROC_BIND`
-`OMP_PLACES`
-`OMP_NESTED`
-`OMP_STACKSIZE`
-`OMP_WAIT_POLICY`
-`OMP_MAX_TASK_PRIORITY`
-</div>
-
-<div class=column>
-`MP_MAX_ACTIVE_LEVELS`
-`OMP_THREAD_LIMIT`
-`OMP_CANCELLATION`
-`OMP_DISPLAY_ENV`
-`OMP_DEFAULT_DEVICE`
-</div>
-
-
-# Parallelizing a loop with library functions
-
-**Don't use this in production!**
-
-```c
-#pragma omp parallel private(i,nthrds,thrd)
-{
-  nthrds = omp_get_num_threads();
-  thrd = omp_get_thread_num();
-  for(i = thrd; i < n; i += nthrds) {
-    vec_c[i] = vec_a[i] + vec_b[i];
-  }
-}
-```
-
-# Fixed example
-
-```c
-#pragma omp parallel shared(global_counter), private(tnum, delay, rem)
-{
-  tnum = omp_get_thread_num();
-  delay.tv_sec = 0;
-  delay.tv_nsec = 10000 * tnum;
-  do {
-#pragma omp barrier
-#pragma omp single {
-      printf("This is iteration %i\n", global_counter);
-      global_counter++;
-    }
-    nanosleep(&delay, &rem);
-  } while(global_counter < 10);
-}
-
-```
--->
 
 # Summary
 
-- Race condition when accessing shared variables
-    - Reduction clause
+- Several parallel reduction operators available via `reduction` clause 
 - OpenMP has many synchronization pragmas
     - Critical sections
     - Atomic
     - Single and Master
-    - And some that we did not present (yet)
-- OpenMP runtime behavior can be controlled using environment variables
+    - And some that we did not present
+	
+# OpenMP programming best practices
+
+- Maximise parallel regions
+    - Reduce fork-join overhead, e.g. combine multiple parallel loops into one
+      large parallel region
+    - Potential for better cache re-usage
+- Parallelise outermost loops if possible
+    - Move PARALLEL DO construct outside of inner loops
+- Reduce access to shared data
+    - Possibly make small arrays private
+- Use more tasks than threads
+    - Too large number of tasks leads to performance loss
+
+
+# OpenMP summary
+
+- OpenMP is an API for thread-based parallelisation
+    - Compiler directives, runtime API, environment variables
+    - Relatively easy to get started but specially efficient and/or real-world
+      parallelisation non-trivial
+- Features touched in this intro
+    - Parallel regions, data-sharing attributes
+    - Work-sharing, reductions, execution control
+
+
+# OpenMP summary
+
+![](img/omp-summary.png)
+
+
+# Things that we did not cover
+
+- Adjusting scheduling of `for` / `do` work-sharing constructs
+- Other work-sharing constructs:
+    - `workshare`, `sections`, `simd`
+    - `teams`, `distribute`
+- Task based parallelisation with `task` consturct
+- More advanced ways to reduce synchronisation overhead with `nowait` and
+  `flush`
+- Support for attached devices with `target`
+
+# Web resources
+
+- OpenMP homepage: <http://openmp.org/>
+- Good online tutorial: <https://computing.llnl.gov/tutorials/openMP/>
+- More online tutorials: <http://openmp.org/wp/resources/#Tutorials>
