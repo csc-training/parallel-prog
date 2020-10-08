@@ -21,9 +21,9 @@ Parallel Programming". The course is part of PRACE Training Center
 ### OpenMP
 
  - [Hello world](openmp/hello-world/)
- - [Data sharing and parallel regions](openmp/data-sharing/)
  - [Work sharing and vector addition](openmp/work-sharing/)
+ - [OpenMP library functions](openmp/lib-funcs/)
+ - [Data sharing and parallel regions](openmp/data-sharing/)
  - [Race condition in parallel sum](openmp/race-condition/)
  - [Reduction and critical](openmp/reduction/)
- - [OpenMP library functions](openmp/lib-funcs/)
  - [Bonus: Heat equation with OpenMP](openmp/heat-equation)
