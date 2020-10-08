@@ -1,7 +1,7 @@
 ---
 title:  Message-Passing Interface (MPI) 
 author: CSC Training
-date:   2019
+date:   2020
 lang:   en
 ---
 
@@ -45,13 +45,16 @@ lang:   en
 
 # Execution model in MPI
 
-- Parallel program is launched as set of *independent*, *identical
+- Normally, parallel program is launched as set of *independent*, *identical
   processes*
     - execute the *same program code* and instructions
     - processes can reside in different nodes (or even in different computers)
 - The way to launch parallel program depends on the computing system
-    - **`mpiexec`**, **`mpirun`**, **`aprun`**, **`srun`**, ...
-    - **`srun`** on taito.csc.fi and puhti.csc.fi
+    - **`mpiexec`**, **`mpirun`**, **`srun`**, **`aprun`**, ...
+    - **`srun`** on puhti.csc.fi and mahti.csc.fi
+- MPI supports also dynamic spawning of processes and launching *different* 
+  programs communicating with each other
+    - rarely used in HPC systems
 
 # MPI ranks
 
@@ -90,6 +93,7 @@ if (rank == 1) {
     - sending and receiving messages between several processes
 - Synchronization between processes
 - Advanced features
+    - Communicator manipulation, user defined datatypes, one-sided communication, ...
 
 # MPI communicator
 
@@ -195,5 +199,5 @@ MPI_Barrier(`comm`{.input})
 <http://mpitutorial.com/tutorials/>
 - MPI 3.1 standard <http://www.mpi-forum.org/docs/>
 - MPI implementations   
-	* MPICH2 <http://www.mcs.anl.gov/research/projects/mpich2/>
 	* OpenMPI <http://www.open-mpi.org/>
+  * MPICH2 <http://www.mcs.anl.gov/research/projects/mpich2/>

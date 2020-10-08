@@ -1,7 +1,7 @@
 ---
 title: Overview of High Performance Computing
 author: CSC Training
-date:   2019
+date:   2020
 lang:   en
 ---
 
@@ -12,8 +12,8 @@ lang:   en
 - Performance of HPC system (i.e. supercomputer) is often measured in
   floating point operations per second (flop/s) 
     - For software, other measures can be more meaningful
-- Currently, the most powerful system reaches ~100 x 10<sup>15</sup> flop/s 
-  (100 Pflop / s) 
+- Currently, the most powerful system reaches ~500 x 10<sup>15</sup> flop/s 
+  (500 Pflop / s) 
 
 # What is high-performance computing?
 
@@ -123,7 +123,7 @@ lang:   en
 # Anatomy of supercomputer
 
 - Supercomputers consist of nodes connected with high-speed network
-    - Latency `~`1 µs, bandwidth `~`10 GB / s
+    - Latency `~`1 µs, bandwidth `~`200 Gb / s
 - A node can contain several multicore CPUS
 - Additionally, node can contain one or more accelerators
 - Memory within the node is directly usable by all CPU cores
