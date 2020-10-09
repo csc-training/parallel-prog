@@ -16,6 +16,7 @@ Parallel Programming". The course is part of PRACE Training Center
  - [Message chain](mpi/message-chain/)
  - [Non-blocking communication](mpi/non-blocking/)
  - [Collective operations](mpi/collectives/)
+ - [Communicators and collectives](communicator)
  - [(Bonus) Heat equation solver](mpi/heat-equation/)
 
 ### OpenMP
