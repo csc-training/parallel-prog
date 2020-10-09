@@ -1,7 +1,7 @@
 ---
 title:  Non-blocking communication 
 author: CSC Training
-date:   2019
+date:   2020
 lang:   en
 ---
 
@@ -181,93 +181,15 @@ MPI_Iprobe(`source`{.input}, `tag`{.input}, `comm`{.input}, `flag`{.output}, `st
 <p>
 Allows incoming messages to be checked, without actually receiving them.
 
-# Non-blocking collectives
-
-- Non-blocking collectives (“``I``-collectives”) enable the overlapping of communication and computation together with the benefits of collective communication.
-
-- Same syntax as for blocking collectives, besides 
-    - “``I``” at the front of the name (`MPI_Alltoall` -> `MPI_Ialltoall`)
-    - Request parameter at the end of the list of arguments
-    - Completion needs to be waited
-
-# Non-blocking collectives
-
-- Restrictions
-    - Have to be called in same order by all ranks in a communicator
-    - Mixing of blocking and non-blocking collectives is not allowed
-
-# Non-blocking collectives
-
-![](img/non_blocking_large.svg){.center width=100%}
-
-![](img/blue_arrow.svg){width=1%} (Computation) work 1  
-![](img/green_arrow.svg){width=1%} (Computation) work 2, not
-involving data in the ``Allreduce`` operation
-
-# Example: Non-blocking broadcasting {.split-definition}
- 
-MPI_Ibcast(`buf`{.input}`fer`{.output}, `count`{.input}, `datatype`{.input}, `root`{.input}, `comm`{.input}, `request`{.output})
-  : `buf`{.input}`fer`{.output} 
-    : data to be distributed
-  
-    `count`{.input}
-    : number of entries in buffer
-
-    `datatype`{.input}
-    : data type of buffer
-
-    `root`{.input}
-    : rank of broadcast root
-
-    `comm`{.input}
-    : communicator
-
-    `request`{.output}
-    : a handle that is used when checking if the operation has finished
-
-# Persistent communication {.section}
-
-# Persistent communication
-
-- Often a communication with same argument list is repeatedly executed
-- It may be possible to optimize such pattern by persistent communication requests
-    - Can be thought as a ”communication port”
-- Usage:
-    - Create requests: `MPI_Send_init` & `MPI_Recv_init`
-        - Initiation and starting of communication separated in addition to communication and completion
-    - Start communication: `MPI_Start` / `MPI_Startall`
-    - Complete communication: `MPI_Wait` / `MPI_Waitall`
-
-# Persistent communication
-
-```c
-MPI_Request recv_obj, send_obj;
-...
-// Initialize send/request objects
-MPI_Recv_init(buf1, cnt, MPI_DOUBLE, src, tag, MPI_COMM_WORLD, &recv_obj);
-MPI_Send_init(buf2, cnt, MPI_DOUBLE, dst, tag, MPI_COMM_WORLD, &send_obj);
-for (i=1; i<BIGNUM; i++){
-// Start communication described by recv_obj and send_obj
-    MPI_Start(&recv_obj);
-    MPI_Start(&send_obj);
-    // Do work, e.g. update the interior domains 
-    ...
-    // Wait for send and receive to complete
-    MPI_Wait(&send_obj, MPI_STATUS_IGNORE);
-    MPI_Wait(&recv_obj, MPI_STATUS_IGNORE);
-}
-//Clean up the requests
-MPI_Request_free (&recv_obj); MPI_Request_free (&send_obj);
-```
 
 # Summary
 
-- Non-blocking communication is usually the smarter way to do point-to-point communication in MPI.
+- Non-blocking communication is often useful way to do point-to-point 
+  communication in MPI.
 - Non-blocking communication core features
     - Open receives with `MPI_Irecv`
     - Start sending with `MPI_Isend`
     - Possibly do something else while the communication takes place
     - Complete the communication with `MPI_Wait` or a variant
 - MPI-3 contains also non-blocking collectives
-- Persistent communication may enable optimization
 
