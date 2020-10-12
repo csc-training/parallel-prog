@@ -89,6 +89,6 @@ void print_ordered(double t)
             printf("Time elapsed in rank %2d: %6.3f\n", i, t);
         }
     } else {
-        MPI_Send(&t, 1, MPI_DOUBLE, i, 11, MPI_COMM_WORLD);
+        MPI_Send(&t, 1, MPI_DOUBLE, 0, 11, MPI_COMM_WORLD);
     }
 }
