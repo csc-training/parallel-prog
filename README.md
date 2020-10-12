@@ -14,7 +14,6 @@ Parallel Programming". The course is part of PRACE Training Center
  - [Hello world](mpi/hello-world/)
  - [Message exchange](mpi/message-exchange/)
  - [Message chain](mpi/message-chain/)
- - [Non-blocking communication](mpi/non-blocking/)
  - [Collective operations](mpi/collectives/)
  - [Communicators and collectives](mpi/communicator)
  - [(Bonus) Heat equation solver](mpi/heat-equation/)

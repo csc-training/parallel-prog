@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <mpi.h>
 
+void print_ordered(double t);
+
 int main(int argc, char *argv[])
 {
     int i, myid, ntasks;
@@ -59,10 +61,27 @@ int main(int argc, char *argv[])
     MPI_Barrier(MPI_COMM_WORLD);
     fflush(stdout);
 
-    printf("Time elapsed in rank %2d: %6.3f\n", myid, t1 - t0);
+    print_ordered(t1 - t0);
 
     free(message);
     free(receiveBuffer);
     MPI_Finalize();
     return 0;
+}
+
+void print_ordered(double t)
+{
+    int i, rank, ntasks;
+    MPI_Comm_rank(MPI_COMM_WORLD, &rank);
+    MPI_Comm_size(MPI_COMM_WORLD, &ntasks);
+
+    if (rank == 0) {
+        printf("Time elapsed in rank %2d: %6.3f\n", rank, t);
+        for (i = 1; i < ntasks; i++) {
+            MPI_Recv(&t, 1, MPI_DOUBLE, i, 11, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+            printf("Time elapsed in rank %2d: %6.3f\n", i, t);
+        }
+    } else {
+        MPI_Send(&t, 1, MPI_DOUBLE, i, 11, MPI_COMM_WORLD);
+    }
 }

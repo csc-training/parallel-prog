@@ -31,7 +31,7 @@ program basic
   ! Receive messages
   if ( myid > 0 ) then
      call mpi_recv(receiveBuffer, size, MPI_INTEGER, myid-1,  &
-          myid, MPI_COMM_WORLD, status, rc)
+          myid, MPI_COMM_WORLD, MPI_STATUS_IGNORE, rc)
      write(*,'(A10,I3,A,I3)') 'Receiver: ', myid, &
           ' First element: ', receiveBuffer(1)
   end if
@@ -41,8 +41,29 @@ program basic
   call mpi_barrier(mpi_comm_world, rc)
   call flush(6)
 
-  write(*, '(A20, I3, A, F6.3)') 'Time elapsed in rank', myid, ':', t1-t0
+  call print_ordered(t1 - t0)
 
   call mpi_finalize(rc)
+
+contains
+
+  subroutine print_ordered(t)
+    implicit none
+    real(REAL64) :: t
+
+    integer i
+
+    if (myid == 0) then
+       write(*, '(A20, I3, A, F6.3)') 'Time elapsed in rank', myid, ':', t
+       do i=1, ntasks-1
+           call mpi_recv(t, 1, MPI_DOUBLE_PRECISION, i, 11,  &
+                         MPI_COMM_WORLD, MPI_STATUS_IGNORE, rc)
+           write(*, '(A20, I3, A, F6.3)') 'Time elapsed in rank', i, ':', t
+       end do
+    else
+       call mpi_send(t, 1, MPI_DOUBLE_PRECISION, 0, 11,  &
+                         MPI_COMM_WORLD, rc)
+    end if
+  end subroutine print_ordered
 
 end program basic
