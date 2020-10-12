@@ -218,7 +218,7 @@ void do_things(int *var) {
 - OpenMP provides also library routines
 - Visibility of variables in parallel region can be specified with
   data sharing clauses
-  - **private** : each thread works with their own variable
-  - **shared** : all threads can write to and read from a shared variable	
-- Race condition possible when writing to shared variables
+    - **private** : each thread works with their own variable
+    - **shared** : all threads can write to and read from a shared variable	
+- Race conditions possible when writing to shared variables
 - Avoiding race conditions is key to correctly functioning OpenMP programs
