@@ -1,11 +1,11 @@
 program exchange
   use mpi
   implicit none
-  integer, parameter :: size = 100
+  integer, parameter :: msgsize = 100, arraysize = 1000
   integer :: rc, myid, ntasks, count
   integer :: status(MPI_STATUS_SIZE)
-  integer :: message(size)
-  integer :: receiveBuffer(size)
+  integer :: message(arraysize)
+  integer :: receiveBuffer(arraysize)
 
   call mpi_init(rc)
   call mpi_comm_rank(MPI_COMM_WORLD, myid, rc)
@@ -15,19 +15,21 @@ program exchange
 
   ! Send and receive as defined in the assignment
   if ( myid == 0 ) then
-     call mpi_send(message, size, MPI_INTEGER, 1, &
+     call mpi_send(message, msgsize, MPI_INTEGER, 1, &
           1, MPI_COMM_WORLD, rc)
-     call mpi_recv(receiveBuffer, size, MPI_INTEGER, 1,  &
+     call mpi_recv(receiveBuffer, arraysize, MPI_INTEGER, 1,  &
           2, MPI_COMM_WORLD, status, rc)
-     write(*,'(A10,I3,A10,I3)') 'Rank: ', myid, &
-          ' received ', receiveBuffer(1)
+     call mpi_get_count(status, MPI_INTEGER, count, rc)
+     write(*,'(A10,I3,A10,I3, A17, I3)') 'Rank: ', myid, &
+          ' received ', count, ' elements, first ', receiveBuffer(1)
   else if (myid == 1) then
-     call mpi_send(message, size, MPI_INTEGER, 0, &
+     call mpi_send(message, msgsize, MPI_INTEGER, 0, &
           2, MPI_COMM_WORLD, rc)
-     call mpi_recv(receiveBuffer, size, MPI_INTEGER, 0,  &
+     call mpi_recv(receiveBuffer, arraysize, MPI_INTEGER, 0,  &
           1, MPI_COMM_WORLD, status, rc)
-     write(*,'(A10,I3,A10,I3)') 'Rank: ', myid, &
-          ' received ', receiveBuffer(1)
+     call mpi_get_count(status, MPI_INTEGER, count, rc)
+     write(*,'(A10,I3,A10,I3, A17, I3)') 'Rank: ', myid, &
+          ' received ', count, ' elements, first ', receiveBuffer(1)
   end if
 
   call mpi_finalize(rc)
